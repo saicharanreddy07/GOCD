@@ -9,7 +9,7 @@ pipelines:
     materials:
 
       code:
-        git: https://github.com/yourusername/app-repo.git
+        git: https://github.com/saicharanreddy07/GOCD.git
         branch: main
 
     stages:
