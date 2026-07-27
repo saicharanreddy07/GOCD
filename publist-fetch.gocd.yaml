@@ -32,7 +32,7 @@ pipelines:
             ReadReport:
               tasks:
                 - fetch:
-                    pipeline: hello-pipeline
+                    pipeline: fetch-pipeline
                     stage: Build
                     job: CreateReport
                     source: reports/report.txt
