@@ -1,7 +1,7 @@
 format_version: 10
 
 pipelines:
-  hello-pipeline:
+  fetch-pipeline:
     group: learning
 
     materials:
