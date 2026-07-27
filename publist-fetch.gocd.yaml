@@ -1,0 +1,44 @@
+format_version: 10
+
+pipelines:
+  hello-pipeline:
+    group: learning
+
+    materials:
+      code:
+        git: https://github.com/saicharanreddy07/GOCD.git
+        branch: main
+
+    stages:
+      - Build:
+          jobs:
+            CreateReport:
+              artifacts:
+                - build:
+                    source: report.txt
+                    destination: reports
+
+              tasks:
+                - exec:
+                    command: sh
+                    arguments:
+                      - -c
+                      - |
+                        echo "GoCD Artifact Demo" > report.txt
+                        echo "Generated at $(date)" >> report.txt
+
+      - Test:
+          jobs:
+            ReadReport:
+              tasks:
+                - fetch:
+                    pipeline: hello-pipeline
+                    stage: Build
+                    job: CreateReport
+                    source: reports/report.txt
+                    destination: fetched
+
+                - exec:
+                    command: cat
+                    arguments:
+                      - fetched/report.txt
