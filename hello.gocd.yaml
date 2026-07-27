@@ -1,0 +1,28 @@
+format_version: 10
+
+pipelines:
+
+  hello-pipeline:
+
+    group: learning
+
+    materials:
+
+      code:
+        git: https://github.com/yourusername/app-repo.git
+        branch: main
+
+    stages:
+
+      - Hello:
+
+          jobs:
+
+            Print:
+
+              tasks:
+
+                - exec:
+                    command: echo
+                    arguments:
+                      - "Hello GoCD"
